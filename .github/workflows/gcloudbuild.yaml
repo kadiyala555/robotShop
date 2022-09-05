@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  GAR_INFO: us-central1-docker.pkg.dev/triangulum-ctv/stans-robot-shop
+  GAR_INFO: northamerica-northeast2-docker.pkg.dev/thedevproj/tdpartifs
   CART_APP_NAME: rs-cart
   SHIPPING_APP_NAME: rs-shipping
   CATALOGUE_APP_NAME: rs-catalogue
@@ -92,7 +92,7 @@ jobs:
         with:
           java-version: 17
           cache: Maven
-      - name: Cache SonarCloud packages
+      - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
@@ -112,29 +112,29 @@ jobs:
           
       - name: Build and analyze on PR
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_GCP_TOKEN }}
-          SONARCLOUD_URL: 'https://sonarqube.cloudapps.telus.com'
+          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_GCP }}
+          SONARCLOUD_URL: 'http://23.236.49.124:9000'
         if: github.event_name == 'pull_request'
         run: |
           cd mockitoApp
             mvn -e -B deploy \
             org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -Dsonar.projectKey=cdo-triangulum-ctv \
+            -Dsonar.projectKey=TheDevProj \
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
             versions:set -DnewVersion=1.0.${{ github.event.pull_request.number }}
         
       - name: Build and analyze on Push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_GCP_TOKEN }}
-          SONARCLOUD_URL: 'https://sonarqube.cloudapps.telus.com'
+          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_GCP }}
+          SONARCLOUD_URL: 'http://23.236.49.124:9000'
         if: github.event_name == 'push'
         run: |
           cd mockitoApp
           mvn -e -B deploy \
           org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=cdo-triangulum-ctv \
+          -Dsonar.projectKey=TheDevProj \
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
           versions:set -DnewVersion=1.0.${GITHUB_SHAR::5}.SNAPSHOT
 
@@ -143,7 +143,7 @@ jobs:
         uses: madrapps/jacoco-report@v1.2
         with:
           paths: mokcitoApp/target/site/jacoco/jacoco.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GIT_HUB_TOKEN }}
           min-coverage-overall: 40
           min-coverage-changed-files: 60
       - name: Publish Unit Test Results
@@ -173,7 +173,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -207,7 +207,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -241,7 +241,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -275,7 +275,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -309,7 +309,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -343,7 +343,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -377,7 +377,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -411,7 +411,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
 
       - name: Run Wiremock server
@@ -468,7 +468,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -502,7 +502,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -536,7 +536,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        
@@ -570,7 +570,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
       # Build the Docker image
        

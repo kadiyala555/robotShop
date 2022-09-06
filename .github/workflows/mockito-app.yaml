@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
  # push:
     #branches:
-     # - main
+     # - dev-branch-1
   # pull_request:
     #branches:
      # - main
@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: 17
           cache: Maven
-      - name: Cache SonarCloud packages
+      - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
@@ -37,15 +37,15 @@ jobs:
       - name: Setup GCP Service Account
         uses: "google-github-actions/auth@v0"
         with:
-          credentials_json: "${{ secrets.GOOGLE_CREDENTIALS }}"
+          credentials_json: "${{ secrets.GOOGLE_CREDENTIALSgit }}"
           
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_GCP_TOKEN }}
-          SONARCLOUD_URL: 'https://sonarqube.cloudapps.telus.com'
+          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_GCP }}
+          SONARCLOUD_URL: 'http://34.70.184.108:9000'
         run: |
-          mvn -e -B deploy org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cdo-triangulum-ctv -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          mvn -e -B deploy org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=TheDevProj -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
       - name: Jacoco Report
         id: jacoco
         uses: madrapps/jacoco-report@v1.2

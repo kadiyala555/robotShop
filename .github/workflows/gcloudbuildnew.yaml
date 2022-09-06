@@ -114,7 +114,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_GCP }}
-          SONARCLOUD_URL: 'http://23.236.49.124:9000'
+          SONARCLOUD_URL: 'http://34.70.184.108:9000'
         if: github.event_name == 'pull_request'
         run: |
           cd mockitoApp
@@ -128,7 +128,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_GCP }}
-          SONARCLOUD_URL: 'http://23.236.49.124:9000'
+          SONARCLOUD_URL: 'http://34.70.184.108:9000'
         if: github.event_name == 'push'
         run: |
           cd mockitoApp

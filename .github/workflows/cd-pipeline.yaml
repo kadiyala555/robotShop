@@ -41,19 +41,19 @@ jobs:
           project_id: ${{secrets.GKE_PROJ}}   
 
       - name: config Docker
-        run:|-
-            gcloud --quite auth configure-docker
+        run: |-
+          gcloud --quite auth configure-docker
 
       - name: get GKE credentials
-        run:|- 
-            gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+        run: |- 
+          gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
       - name: build docker image
-        run:|-
-             docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:$TAG"
+        run: |-
+           docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:$TAG"
 
       - name: Publish docker image to GCR
-        run:
-            docker push "gcr.io"/$PROJECT_ID/$IMAGE:$TAG"
+        run: |-
+          docker push "gcr.io"/$PROJECT_ID/$IMAGE:$TAG"
 
                  

@@ -14,13 +14,13 @@ env:
    TAG: 1.0.0
 
 jobs: 
-   setup-build-publish-deploy:
-     name: setup build publish deploy
-     runs-on: ubuntu-latest
+  setup-build-publish-deploy:
+    name: setup build publish deploy
+    runs-on: ubuntu-latest
 
-   steps:   
-       - name: checkout repository
-         uses: actions/checkout@v2
+    steps:   
+      - name: checkout repository
+        uses: actions/checkout@v2
        
       - name: setup jdk 1.8
         uses: actions/setup-java@v1

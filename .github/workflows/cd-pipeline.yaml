@@ -19,8 +19,8 @@ jobs:
      runs-on: ubuntu-latest
 
    steps:   
-      - name: checkout repository
-        uses: actions/checkout@v2
+       - name: checkout repository
+         uses: actions/checkout@v2
        
       - name: setup jdk 1.8
         uses: actions/setup-java@v1

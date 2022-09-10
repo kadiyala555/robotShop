@@ -324,7 +324,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
       # Build the Docker image
        
       - name: Build-and-push-to-GAR
@@ -442,7 +442,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
       # Build the Docker image
        
       - name: Build-and-push-to-GAR
@@ -474,7 +474,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
       # Build the Docker image
        
       - name: Build-and-push-to-GAR
@@ -507,7 +507,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
       # Build the Docker image
        
       - name: Build-and-push-to-GAR
@@ -539,7 +539,7 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - name: Setup Docker
         run: |
-          gcloud auth configure-docker us-central1-docker.pkg.dev
+          gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
       # Build the Docker image
        
       - name: Build-and-push-to-GAR

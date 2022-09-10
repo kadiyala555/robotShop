@@ -401,6 +401,7 @@ jobs:
 
        
         run: |
+          cd shipping
           docker run -d -p 8080:8080 -v $PWD/src/test/resources:/home/wiremock --name wiremock wiremock/wiremock:2.33.1
           docker container inspect wiremock
           echo `docker container port wiremock`

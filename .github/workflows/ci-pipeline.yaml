@@ -165,7 +165,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd cart
           export TAG=`cat cart/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$CART_APP_NAME":"$TAG"
@@ -199,7 +198,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd catalogue
           export TAG=`cat catalogue/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$CATALOGUE_APP_NAME":"$TAG"
@@ -233,7 +231,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd dispatch
           export TAG=`cat dispatch/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$DISPATCH_APP_NAME":"$TAG"
@@ -266,7 +263,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd mongo
           export TAG=`cat mongo/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$MONGO_APP_NAME":"$TAG"
@@ -300,7 +296,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd mysql
           export TAG=`cat mysql/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$MYSQL_APP_NAME":"$TAG"
@@ -334,7 +329,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd payment
           export TAG=`cat payment/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$PAYMENT_APP_NAME":"$TAG"
@@ -368,7 +362,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd ratings
           export TAG=`cat ratings/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$RATINGS_APP_NAME":"$TAG"
@@ -408,7 +401,6 @@ jobs:
 
        
         run: |
-          cd shipping
           docker run -d -p 8080:8080 -v $PWD/src/test/resources:/home/wiremock --name wiremock wiremock/wiremock:2.33.1
           docker container inspect wiremock
           echo `docker container port wiremock`
@@ -455,7 +447,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd user
           export TAG=`cat user/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$USER_APP_NAME":"$TAG"
@@ -488,7 +479,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd web
           export TAG=`cat web/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$WEB_APP_NAME":"$TAG"
@@ -522,7 +512,6 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd redis
           export TAG=`cat redis/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$REDIS_APP_NAME":"$TAG"
@@ -555,10 +544,10 @@ jobs:
        
       - name: Build-and-push-to-GAR
         run: |
-          cd rabbitmq
           export TAG=`cat rabbitmq/VERSION.txt`
           echo $TAG
           echo "$GAR_INFO"/"$RABBITMQ_APP_NAME":"$TAG"
           docker build -t "$GAR_INFO"/"$RABBITMQ_APP_NAME":"$TAG" rabbitmq/
           gcloud info
           docker push "$GAR_INFO"/"$RABBITMQ_APP_NAME":"$TAG"
+        

@@ -420,7 +420,7 @@ jobs:
           docker push "$GAR_INFO"/"$RABBITMQ_APP_NAME":"$TAG"
 
   deploy-to-gcp-learn:
-    name: Deploy to GCP Dev learn
+    name: Deploy to GCP learn env
     needs: [build-cart,build-catalogue,build-dispatch,build-mongo,build-mysql,build-payment,build-rabbitmq,build-ratings,build-redis,build-shipping,build-user,build-web]
     runs-on: ubuntu-latest
     timeout-minutes: 10

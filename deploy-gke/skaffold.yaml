@@ -1,9 +1,0 @@
-deploy:
-  helm:
-    releases:
-      - name: robot-shop
-        chartPath: k8s/helm
-        artifactOverrides:
-          image: robotshop:latest
-        imageStrategy:
-          helm: {}

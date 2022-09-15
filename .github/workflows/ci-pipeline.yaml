@@ -446,12 +446,12 @@ jobs:
       
       - name: verify if the rollout is success
         run: |
-         gcloud deploy rollouts describe rel-${{ env.date_var }}-to-learn-0001 --release=rel-${{ env.date_var }} --delivery-pipeline=robot-shop --region=us-central1-c
+         gcloud deploy rollouts describe rel-${{ env.date_var }}-to-learn-0001 --release=rel-${{ env.date_var }} --delivery-pipeline=robot-shop --region=northamerica-northeast2
          sleep 60
          counter=0
          while [ $counter -lt 20 ]
          do
-         export some_val=`gcloud deploy rollouts describe rel-${{ env.date_var }}-to-learn-0001 --release=rel-${{ env.date_var }} --delivery-pipeline=robot-shop --region=us-central1-c | grep state: | cut -f2 -d: | cut -d' ' -f2`
+         export some_val=`gcloud deploy rollouts describe rel-${{ env.date_var }}-to-learn-0001 --release=rel-${{ env.date_var }} --delivery-pipeline=robot-shop --region=northamerica-northeast2 | grep state: | cut -f2 -d: | cut -d' ' -f2`
          if [ "$some_val" == "IN_PROGRESS" ]
          then
            echo "Deployment in Progress Time is: `date`"

@@ -4,9 +4,6 @@
 
 ## Continuous Testing Vision (Triangulum Project - Service Virtualization)
 
-[![N|Solid](https://images.ctfassets.net/fikanzmkdlqn/5NoHRB1q6lrNzSSpekhrG5/cf22f3d7d9e82aed5e79659800458b57/TELUS_TAGLINE_HORIZONTAL_EN.svg)](https://www.telus.com/en/)
-
-
 ### Table of Contents
 
 1. [What Is Continuous Testing Vision (CTV)](#what-is-continuous-testing-vision-ctv) 
